@@ -4,7 +4,7 @@
  * Plugin URI:        https://oneoffboss.com/
  * Description:       A lightweight, privacy-first cookie consent banner that respects user choice.
  * Version:           1.0.0
- * Author:            LBridges, OneOffBoss
+ * Author:            OneOffBoss
  * Author URI:        https://oneoffboss.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

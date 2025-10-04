@@ -69,17 +69,6 @@
 }
 
 
-/* Animation for banner appearing */
-@keyframes qc-slide-up {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     .qc-banner-content {

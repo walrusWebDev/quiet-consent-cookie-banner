@@ -3,7 +3,7 @@
 
   /**
    * Dynamically loads and initializes Google Analytics.
-   * We only call this if the user gives consent.
+   * This function is only called if the user gives consent.
    */
   function initializeGoogleAnalytics() {
     // Prevent this function from running more than once
@@ -51,31 +51,28 @@
 
     const consentValue = localStorage.getItem('quiet_consent');
 
-    // If consent has already been given, initialize GA and exit.
+    // If consent has already been given, initialize GA.
     if (consentValue === 'accepted') {
       initializeGoogleAnalytics();
-      return;
+    } 
+    // If no choice has been made yet, show the banner.
+    else if (!consentValue) {
+      banner.classList.add('qc-banner--is-visible');
     }
+    // If declined, do nothing. The banner remains hidden by default.
 
-    // If consent has been explicitly declined, do nothing.
-    if (consentValue === 'declined') {
-      return;
-    }
-
-    // If no choice has been made, show the banner.
-    banner.style.display = 'block';
 
     // Event listener for the "Accept" button.
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('quiet_consent', 'accepted');
-      banner.style.display = 'none';
+      banner.classList.remove('qc-banner--is-visible');
       initializeGoogleAnalytics();
     });
 
     // Event listener for the "Decline" button.
     declineBtn.addEventListener('click', () => {
       localStorage.setItem('quiet_consent', 'declined');
-      banner.style.display = 'none';
+      banner.classList.remove('qc-banner--is-visible');
     });
   });
 

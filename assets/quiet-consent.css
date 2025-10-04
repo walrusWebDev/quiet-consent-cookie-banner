@@ -1,23 +1,50 @@
-/* * Quiet Consent Banner Styles
- * Version: 1.0.0
+/*
+ * Quiet Consent Banner Styles
+ * Version: 1.1.0
  */
 
 .qc-banner {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    z-index: 99999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.5;
     
     /* Hide by default off-screen with a smooth transition */
     visibility: hidden;
     transform: translateY(100%);
-    transition: transform 0.5s ease-out, visibility 0.5s;
+    transition: transform 0.5s ease-out, visibility 0.5s, opacity 0.5s ease-out;
+    opacity: 0;
 }
 
-/* This class is added by JavaScript to make the banner slide into view */
+/* This class is added by JavaScript to make the banner appear */
 .qc-banner.qc-banner--is-visible {
     visibility: visible;
     transform: translateY(0);
+    opacity: 1;
+}
+
+/* Style 1: Bottom Bar (Default) */
+.qc-banner--style-bar {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    color: #eee;
+    padding: 1.5rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style 2: Floating Box */
+.qc-banner--style-floating {
+    bottom: 2rem;
+    left: 2rem;
+    max-width: 500px;
+    background-color: #efefef;
+    color: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
 .qc-banner-content {
@@ -51,25 +78,33 @@
 }
 
 .qc-button-accept {
-    background-color: #4CAF50; /* A friendly green */
+    background-color: #4CAF50;
     color: white;
 }
+.qc-banner--style-floating .qc-button-accept {
+    background-color: #2a79d7;
+}
+
 
 .qc-button-accept:hover {
-    background-color: #45a049;
+    opacity: 0.9;
 }
 
 .qc-button-decline {
     background-color: #555;
     color: #eee;
 }
-
-.qc-button-decline:hover {
-    background-color: #666;
+.qc-banner--style-floating .qc-button-decline {
+    background-color: #ddd;
+    color: #444;
 }
 
 
-/* Responsive styles for smaller screens */
+.qc-button-decline:hover {
+    opacity: 0.9;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
     .qc-banner-content {
         flex-direction: column;
@@ -80,7 +115,13 @@
         width: 100%;
         justify-content: flex-end;
     }
-    .qc-button {
-        width: 50%;
+    /* Make floating box full-width on mobile */
+    .qc-banner--style-floating {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: none;
+        border-radius: 0;
     }
 }
+

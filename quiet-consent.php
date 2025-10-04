@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// Define a constant for the plugin URL for cleaner code.
+define( 'QC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 /**
  * Main plugin class
  */
@@ -139,8 +142,8 @@ class Quiet_Consent {
 			return;
 		}
 
-		wp_enqueue_style( 'quiet-consent-css', plugin_dir_url( __FILE__ ) . 'assets/css/quiet-consent.css', [], '1.1.0' );
-		wp_enqueue_script( 'quiet-consent-js', plugin_dir_url( __FILE__ ) . 'assets/js/quiet-consent.js', [], '1.1.0', true );
+		wp_enqueue_style( 'quiet-consent-css', QC_PLUGIN_URL . 'assets/css/quiet-consent.css', [], '1.1.1' );
+		wp_enqueue_script( 'quiet-consent-js', QC_PLUGIN_URL . 'assets/js/quiet-consent.js', [], '1.1.1', true );
 
 		// Pass the GA ID to the JavaScript file
 		wp_localize_script( 'quiet-consent-js', 'quietConsent', [ 'gaId' => esc_js( $ga_id ) ] );

@@ -68,7 +68,7 @@ function qc_render_banner_html() {
 	}
 	?>
 	<!-- Quiet Consent Banner -->
-	<div id="quiet-consent-banner" class="qc-banner" role="dialog" aria-live="polite" aria-label="Cookie Consent Banner" style="display: none;">
+	<div id="quiet-consent-banner" class="qc-banner" role="dialog" aria-live="polite" aria-label="Cookie Consent Banner">
 		<div class="qc-banner-content">
 			<p class="qc-banner-text">This site uses cookies for analytics. By clicking "Accept", you agree to this use.</p>
 			<div class="qc-banner-buttons">
